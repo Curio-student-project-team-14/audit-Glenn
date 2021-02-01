@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Tabelstructuur voor tabel `acties`
 --
 
-CREATE TABLE `acties` (
+CREATE TABLE IF NOT EXISTS `acties` (
   `id` int(11) NOT NULL,
   `datum_ontstaan` date DEFAULT NULL,
   `bron_detail` varchar(50) DEFAULT NULL,
@@ -73,7 +73,7 @@ INSERT INTO `acties` (`id`, `datum_ontstaan`, `bron_detail`, `audit_oordeel_ia`,
 -- Tabelstructuur voor tabel `actie_link`
 --
 
-CREATE TABLE `actie_link` (
+CREATE TABLE IF NOT EXISTS  `actie_link` (
   `id` int(11) NOT NULL,
   `actie_id` int(11) NOT NULL,
   `aanmaker_id` bigint(20) UNSIGNED NOT NULL
@@ -92,7 +92,7 @@ INSERT INTO `actie_link` (`id`, `actie_id`, `aanmaker_id`) VALUES
 -- Tabelstructuur voor tabel `migrations`
 --
 
-CREATE TABLE `migrations` (
+CREATE TABLE IF NOT EXISTS  `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
@@ -104,7 +104,7 @@ CREATE TABLE `migrations` (
 -- Tabelstructuur voor tabel `risicoclassificatie`
 --
 
-CREATE TABLE `risicoclassificatie` (
+CREATE TABLE IF NOT EXISTS  `risicoclassificatie` (
   `id` int(11) NOT NULL,
   `actuele_risicoclassificatie_ia` enum('1','2','3','4') NOT NULL,
   `oorzaak_clasificatie` varchar(50) NOT NULL,
@@ -124,7 +124,7 @@ INSERT INTO `risicoclassificatie` (`id`, `actuele_risicoclassificatie_ia`, `oorz
 -- Tabelstructuur voor tabel `risicosoort`
 --
 
-CREATE TABLE `risicosoort` (
+CREATE TABLE IF NOT EXISTS  `risicosoort` (
   `id` int(11) NOT NULL,
   `primair` varchar(50) NOT NULL,
   `secundair` varchar(50) NOT NULL
@@ -145,7 +145,7 @@ INSERT INTO `risicosoort` (`id`, `primair`, `secundair`) VALUES
 -- Tabelstructuur voor tabel `roles`
 --
 
-CREATE TABLE `roles` (
+CREATE TABLE IF NOT EXISTS  `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `role` enum('Admin','Auditor','Probleem-Eigenaar','Actie-Eigenaar','Techneut','Leraar') NOT NULL
@@ -166,7 +166,7 @@ INSERT INTO `roles` (`id`, `user_id`, `role`) VALUES
 -- Tabelstructuur voor tabel `sector`
 --
 
-CREATE TABLE `sector` (
+CREATE TABLE IF NOT EXISTS  `sector` (
   `id` int(11) NOT NULL,
   `sector` varchar(50) NOT NULL,
   `domein` varchar(50) NOT NULL,
@@ -188,7 +188,7 @@ INSERT INTO `sector` (`id`, `sector`, `domein`, `keten`) VALUES
 -- Tabelstructuur voor tabel `status`
 --
 
-CREATE TABLE `status` (
+CREATE TABLE IF NOT EXISTS  `status` (
   `id` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
   `substatus` varchar(50) NOT NULL
@@ -208,7 +208,7 @@ INSERT INTO `status` (`id`, `status`, `substatus`) VALUES
 -- Tabelstructuur voor tabel `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
